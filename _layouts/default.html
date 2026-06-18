@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+</head>
+<body>
+
+  <div class="site-header">
+    <div class="wrapper">
+      <span class="site-title">{{ site.title }}</span>
+      <nav>
+        <a href="{{ '/' | relative_url }}">Гайды</a>
+        <a href="{{ '/contact' | relative_url }}">Связь</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrapper">
+    {{ content }}
+  </main>
+
+  <footer>
+    <div class="wrapper">
+      <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+title: OralZapret
+email: 
+description: ""
+baseurl: ""
+url: "https://mysor-ka.github.io"
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+permalink: /:year/:month/:day/:title/

@@ -1,0 +1,100 @@
+---
+layout: default
+---
+
+{% if page.image %}
+<img class="post-banner" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+{% endif %}
+
+<!-- БОКОВОЕ ОГЛАВЛЕНИЕ — фиксированное, только для постов -->
+<aside class="toc-sidebar" id="global-toc">
+  <nav class="toc-nav">
+    <ul class="toc-list" id="toc-list">
+      <!-- Заполняется автоматически -->
+    </ul>
+  </nav>
+</aside>
+
+<div class="post-layout">
+  <article class="post-article">
+    <div class="post-header">
+      <h1>{{ page.title }}</h1>
+    </div>
+    <div class="post-content" id="post-content">
+      {{ content }}
+    </div>
+  </article>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const content = document.getElementById('post-content');
+  const tocList = document.getElementById('toc-list');
+  
+  if (!content || !tocList) return;
+  
+  const headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6');
+  
+  headings.forEach((heading, index) => {
+    const id = heading.id || ('heading-' + index);
+    if (!heading.id) heading.id = id;
+    
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#' + heading.id;
+    a.textContent = heading.textContent;
+    
+    if (heading.tagName === 'H1') {
+      li.style.paddingLeft = '0';
+      li.style.fontWeight = '300';
+    } else if (heading.tagName === 'H2') {
+      li.style.paddingLeft = '0';
+    } else if (heading.tagName === 'H3') {
+      li.style.paddingLeft = '0.75rem';
+    } else if (heading.tagName === 'H4') {
+      li.style.paddingLeft = '1.5rem';
+    } else if (heading.tagName === 'H5') {
+      li.style.paddingLeft = '2.25rem';
+    } else if (heading.tagName === 'H6') {
+      li.style.paddingLeft = '3rem';
+    }
+    
+    li.appendChild(a);
+    tocList.appendChild(li);
+    
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      manualClick = true;
+      tocLinks.forEach(link => link.classList.remove('active'));
+      a.classList.add('active');
+      heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        manualClick = false;
+      }, 1500);
+    });
+  });
+  
+  const tocLinks = tocList.querySelectorAll('a');
+  let manualClick = false;
+  
+  const observer = new IntersectionObserver((entries) => {
+    if (manualClick) return;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        let activeLink = null;
+        tocLinks.forEach(link => {
+          const isActive = link.getAttribute('href') === '#' + id;
+          link.classList.toggle('active', isActive);
+          if (isActive) activeLink = link;
+        });
+        if (activeLink) {
+          activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    });
+  }, { rootMargin: '-5% 0px -85% 0px' });
+  
+  headings.forEach(h => observer.observe(h));
+});
+</script>
