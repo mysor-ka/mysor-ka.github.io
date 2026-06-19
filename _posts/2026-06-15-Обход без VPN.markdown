@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Обход без VPNㅤтолько на ПК"
+title:  "Обход без VPN: Telegram, YouTube, Discord"
 image: assets/img/2 Обход без VPN/0 Обход без VPN.png
-excerpt: "Доступ кㅤYouTube,ㅤDiscord,ㅤTelegram,ㅤно без покупкиㅤVPN"
+excerpt: "Доступ к YouTube, Discord, Telegram, но без покупкиㅤVPN"
 ---
 
 ## Telegram
