@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ㅤСайты
+title: ㅤСвязь
 ---
 
 ㅤㅤVPN Cервис — [StealthSurf](https://i.stealthsurf.net/61df2adcbef10)
