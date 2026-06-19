@@ -7,6 +7,8 @@ title: ㅤСайты
 
 ㅤㅤТех поддержка сервиса — [StealthSurf Support](https://t.me/stealthsurf_support_bot)
 
-ㅤㅤМой Telegram канал — [Оральный ущерб](https://t.me/+Meqxytjeg2c1MTky)
+ㅤㅤМой Telegram канал — [Оральный ущерб](https://t.me/oralzapret)
 <br>ㅤㅤНовости по сбоям, законам, оповещениям, обновлениям. Вопросы задавайте в комменты
 
+ㅤㅤVK группа — [https://vk.com/oralzapret](https://vk.com/oralzapret)
+<br>ㅤㅤЕсли не работает тг
