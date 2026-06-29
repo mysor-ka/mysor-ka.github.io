@@ -589,8 +589,15 @@ pre code {
 }
 
 /* ═══════════════════════════════════════ */
-/* МОБИЛЬНАЯ — отступы поста как в списке  */
+/* МОБИЛЬНАЯ — фикс отступов поста         */
 /* ═══════════════════════════════════════ */
+
+@media (max-width: 1320px) {
+  .post-layout {
+    max-width: 100%;
+    padding: 0;
+  }
+}
 
 @media (max-width: 768px) {
   .post-banner {
@@ -687,7 +694,6 @@ pre code {
   display: block;
 }
 
-/* Сброс десктопных «вертикальных линий» для мобильного вида */
 .toc-mobile-dropdown .toc-list {
   display: block;
   margin: 0;
@@ -702,13 +708,6 @@ pre code {
 .toc-mobile-dropdown .toc-list li::before {
   display: none !important;
 }
-
-/* Отступы по вложенности — чем глубже, тем правее */
-.toc-mobile-dropdown .toc-list li.toc-h2 a { padding-left: 0.6rem; }
-.toc-mobile-dropdown .toc-list li.toc-h3 a { padding-left: 1.2rem; }
-.toc-mobile-dropdown .toc-list li.toc-h4 a { padding-left: 1.8rem; }
-.toc-mobile-dropdown .toc-list li.toc-h5 a { padding-left: 2.4rem; }
-.toc-mobile-dropdown .toc-list li.toc-h6 a { padding-left: 3.0rem; }
 
 .toc-mobile-dropdown .toc-list a {
   display: block;
@@ -729,20 +728,17 @@ pre code {
   border-left-color: #D4AACB;
 }
 
-/* Скрываем десктопный sidebar на узких экранах */
 @media (max-width: 1320px) {
   .toc-sidebar {
     display: none;
   }
 }
 
-/* Показываем мобильный TOC */
 @media (max-width: 768px) {
   .toc-mobile {
     display: block;
   }
 
-  /* Отступ для контента, чтобы не перекрывался липкой строкой */
   body {
     padding-top: 3.2rem;
   }
