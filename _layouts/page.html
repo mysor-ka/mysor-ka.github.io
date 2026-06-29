@@ -72,3 +72,129 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+<script>
+(function() {
+  'use strict';
+
+  function initMobileToc() {
+    const desktopToc = document.querySelector('.toc-sidebar');
+    if (!desktopToc) return;
+
+    const tocList = desktopToc.querySelector('.toc-list');
+    if (!tocList) return;
+
+    // Проверяем, что основной скрипт уже создал пункты
+    const tocLinks = tocList.querySelectorAll('a');
+    if (tocLinks.length === 0) return;
+
+    // Не создавать дубль, если уже есть
+    if (document.querySelector('.toc-mobile')) return;
+
+    const tocMobile = document.createElement('div');
+    tocMobile.className = 'toc-mobile';
+
+    const toggle = document.createElement('button');
+    toggle.className = 'toc-mobile-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span class="toc-mobile-current">Содержание</span><span class="toc-mobile-arrow">▼</span>';
+
+    const dropdown = document.createElement('div');
+    dropdown.className = 'toc-mobile-dropdown';
+
+    // Клонируем уже заполненный список
+    const mobileList = tocList.cloneNode(true);
+    mobileList.removeAttribute('id');
+    dropdown.appendChild(mobileList);
+
+    tocMobile.appendChild(toggle);
+    tocMobile.appendChild(dropdown);
+    document.body.insertBefore(tocMobile, document.body.firstChild);
+
+    const currentLabel = tocMobile.querySelector('.toc-mobile-current');
+    const mobileLinks  = dropdown.querySelectorAll('a');
+
+    // --- Открыть / закрыть ---
+    toggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = tocMobile.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!tocMobile.contains(e.target)) {
+        tocMobile.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // --- Клик по теме: скролл, сворачивание, обновление строки ---
+    mobileLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (!href || href[0] !== '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 70;
+          const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+        tocMobile.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        currentLabel.textContent = this.textContent;
+
+        mobileLinks.forEach(function(l) { l.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+
+    // --- Intersection Observer: менять текст при скролле ---
+    const headingIds = [];
+    mobileLinks.forEach(function(link) {
+      const href = link.getAttribute('href');
+      if (href && href[0] === '#') headingIds.push(href.slice(1));
+    });
+
+    if (headingIds.length === 0) return;
+
+    const selector = headingIds.map(function(id) { return '#' + CSS.escape(id); }).join(', ');
+    const headings = document.querySelectorAll(selector);
+
+    if (headings.length && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const activeLink = dropdown.querySelector('a[href="#' + CSS.escape(id) + '"]');
+            if (activeLink) {
+              currentLabel.textContent = activeLink.textContent;
+              mobileLinks.forEach(function(l) { l.classList.remove('active'); });
+              activeLink.classList.add('active');
+            }
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '-70px 0px -75% 0px',
+        threshold: 0
+      });
+
+      headings.forEach(function(h) { observer.observe(h); });
+
+      // Установить начальную тему
+      const firstLink = dropdown.querySelector('a[href="#' + CSS.escape(headings[0].id) + '"]');
+      if (firstLink) {
+        currentLabel.textContent = firstLink.textContent;
+        firstLink.classList.add('active');
+      }
+    }
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initMobileToc();
+  } else {
+    document.addEventListener('DOMContentLoaded', initMobileToc);
+  }
+})();
+</script>

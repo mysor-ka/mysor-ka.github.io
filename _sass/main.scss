@@ -589,39 +589,32 @@ pre code {
 }
 
 /* ═══════════════════════════════════════ */
-/* МОБИЛЬНАЯ — фикс отступов поста         */
+/* МОБИЛЬНАЯ — отступы поста как в списке  */
 /* ═══════════════════════════════════════ */
-
-@media (max-width: 1320px) {
-  .post-layout {
-    max-width: 100%;
-    padding: 0;
-  }
-}
 
 @media (max-width: 768px) {
   .post-banner {
-    margin: 0 1rem;
-    width: calc(100% - 2rem);
+    margin: 0;
+    width: 100%;
     border-radius: 10px 10px 0 0;
   }
 
   .post-article {
-    margin: 0 1rem 1.5rem;
-    padding: 1.5rem;
+    margin: 0 0 1.5rem;
+    padding: 1.25rem;
     border-radius: 0 0 10px 10px;
   }
 }
 
 @media (max-width: 480px) {
   .post-banner {
-    margin: 0 0.75rem;
-    width: calc(100% - 1.5rem);
+    margin: 0;
+    width: 100%;
     border-radius: 8px 8px 0 0;
   }
 
   .post-article {
-    margin: 0 0.75rem 1rem;
+    margin: 0 0 1rem;
     padding: 1rem;
     border-radius: 0 0 8px 8px;
   }
