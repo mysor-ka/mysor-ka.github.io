@@ -88,7 +88,7 @@ excerpt: "Купим страну,ㅤНастроим конфиг,ㅤПодкл
 Каждый пункт ниже это одно решение вашей проблемы, если не помог 1, переходите к 2’ому, если тоже нет, то к 3’ему
 <br>**После каждого изменения настроек обновляйте подписку в приложении!**
 
-ㅤ0) Проверьте статус работы серверов — https://status.stealthsurf.net/ — в случае сбоя нужно подождать
+ㅤ0) Проверьте статус работы серверов — [status.stealthsurf.net] — в случае сбоя нужно подождать
 <br>ㅤ1) Смените сервер в локации (например, с 1734 на 1983)
 <br>ㅤ2) Поочерёдно пробуйте разные настройки конфига на каждом протоколе:ㅤ
 <br>ㅤ•ㅤМеняйте протоколы (если с настройками ниже не работает): **VLESS** ➔ **Trojan** ➔ **Hysteria 2**
@@ -101,7 +101,7 @@ excerpt: "Купим страну,ㅤНастроим конфиг,ㅤПодкл
 ## Установка на устройства
 ### StealthSurf
 Использую как основную программу
-<br>ㅤУстановить программу на свою версию устройства можно на сайте — https://stealthsurf.net/apps
+<br>ㅤУстановить программу на свою версию устройства можно на сайте — [stealthsurf.net/apps]
 
 Перед запуском выдаёте программе права админа (для Windows):
 <br>ㅤ•ㅤПКМ по ярлыку — Свойства — Совместимость — Запуск от имени админа
@@ -220,7 +220,7 @@ excerpt: "Купим страну,ㅤНастроим конфиг,ㅤПодкл
 <br>•ㅤЕсли на сайте вы ЧТО-ЛИБО поменяли в конфиге
 <br>•ㅤПри замене домена у сервиса
 
-#### StealthSerf
+#### StealthSurf
 
 Смотреть инструкцию выше
 
@@ -274,4 +274,5 @@ excerpt: "Купим страну,ㅤНастроим конфиг,ㅤПодкл
 [App Store - Happ]: https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973#information
 [Play Market - v2RayTun]: https://play.google.com/store/apps/details?id=com.v2raytun.android&hl=ru
 [App Store - v2RayTun]: https://apps.apple.com/us/app/v2raytun/id6476628951
-[https://stealthsurf.net/apps]: https://stealthsurf.net/apps
+[status.stealthsurf.net]: https://status.stealthsurf.net
+[stealthsurf.net/apps]: https://stealthsurf.net/apps
